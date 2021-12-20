@@ -6,7 +6,8 @@ Class definition of YOLO_v4 style detection model on image and video
 import colorsys
 import tensorflow as tf
 from tensorflow.compat.v1.keras import backend as K
-from keras.backend.tensorflow_backend import get_session
+# from keras.backend.tensorflow_backend import get_session
+from tensorflow.python.keras.backend import get_session
 import numpy as np
 from keras import backend as K
 from keras.models import load_model
@@ -14,11 +15,13 @@ from keras.models import load_model
 from yolo4.model import yolo_eval, Mish
 from yolo4.utils import letterbox_image
 import os
-from keras.utils import multi_gpu_model
+# from keras.utils import multi_gpu_model
+from tensorflow.python.keras.utils.multi_gpu_utils import multi_gpu_model
+
 
 class YOLO(object):
     def __init__(self):
-        self.model_path = 'model_data/yolo4.h5'
+        self.model_path = 'model_data/yolov4.h5'
         self.anchors_path = 'model_data/yolo_anchors.txt'
         self.classes_path = 'model_data/coco_classes.txt'
         self.gpu_num = 1
